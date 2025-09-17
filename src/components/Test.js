@@ -1,7 +1,5 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
-const jsx_runtime_1 = require('react/jsx-runtime');
+import { jsx as _jsx } from 'react/jsx-runtime';
 function Test() {
-  return (0, jsx_runtime_1.jsx)('div', { children: 'Test' });
+  return _jsx('div', { children: 'Test' });
 }
-exports.default = Test;
+export default Test;

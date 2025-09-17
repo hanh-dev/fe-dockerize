@@ -1,37 +1,18 @@
 {
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    /* Build info */
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-
-    /* Target & lib */
-    "target": "ES2022",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
-
-    /* Module */
-    "module": "ES2022",
-    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "noEmit": true,
-    "jsx": "react-jsx",
-
-    /* Class & strict mode */
     "useDefineForClassFields": true,
-    "strict": true,
-
-    /* Linting & safety */
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "isolatedModules": false,
-
-    /* Jest + Node types */
-    "types": ["node"]
+    "isolatedModules": false
   },
   "include": ["src"]
 }

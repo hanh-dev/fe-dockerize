@@ -1,16 +1,10 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "types": ["jest", "@testing-library/jest-dom"],
-    "isolatedModules": false,
-    "jsx": "react-jsx",
-    "esModuleInterop": true
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "types": ["jest", "@testing-library/jest-dom", "node"]
   },
-  "include": [
-    "setupTests.ts",
-    "**/*.test.ts",
-    "**/*.test.tsx",
-    "**/*.spec.ts",
-    "**/*.spec.tsx"
-  ]
+  "include": ["src", "tests", "setupTests.ts", "setuptests.ts", "**/*.test.*"]
 }
