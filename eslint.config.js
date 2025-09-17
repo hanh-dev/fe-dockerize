@@ -41,8 +41,13 @@ export default tseslint.config(
       'array-bracket-spacing': ['error', 'never'],
       'no-console': 'off',
 
-      // Unused vars
-      '@typescript-eslint/no-unused-vars': ['error'],
+      'no-unused-vars': 'off',
+
+      // dùng rule của @typescript-eslint
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
 
       // best practices
       'no-var': 'error',
