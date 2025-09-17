@@ -29,7 +29,7 @@ const ToDoList: React.FC = () => {
       <input
         type="text"
         value={input}
-        onChange={e => setInput(e.target.value)}
+        onChange={(e) => setInput(e.target.value)}
         placeholder="Nhập việc cần làm..."
         style={{ width: '70%', padding: 8, marginRight: 8 }}
       />
