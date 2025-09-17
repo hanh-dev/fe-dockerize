@@ -48,7 +48,7 @@ export default tseslint.config(
       'prefer-arrow-callback': 'error',
       'no-multiple-empty-lines': ['error', { max: 1 }],
       'max-len': ['error', { code: 120 }],
-      'arrow-parens': ['error', 'always'],
+      'arrow-parens': ['off'],
 
       // react
       'react-hooks/rules-of-hooks': 'error',
