@@ -4,7 +4,9 @@
     "target": "ES2022",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
-    "types": ["jest", "@testing-library/jest-dom", "node"]
+    "types": ["jest", "@testing-library/jest-dom", "node"],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["src", "tests", "setupTests.ts", "setuptests.ts", "**/*.test.*"]
+  "include": ["src", "tests", "setupTests.ts", "**/*.test.*", "**/*.spec.*"]
 }
