@@ -2,7 +2,7 @@ name: CI practice for react app
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -17,9 +17,22 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+
+      - name: Prettier check
+        run: npm run format:check
+      
+      - name: ESLint check
+        run: npm run lint
 
       - name: Build React app
         run: npm run build
-

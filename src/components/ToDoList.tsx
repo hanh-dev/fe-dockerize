@@ -16,16 +16,26 @@ const ToDoList: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: 400, margin: '40px auto', padding: 20, border: '1px solid #ccc', borderRadius: 8 }}>
-      <h2>ToDo List</h2>
+    <div
+      style={{
+        maxWidth: 400,
+        margin: '40px auto',
+        padding: 20,
+        border: '1px solid #ccc',
+        borderRadius: 8,
+      }}
+    >
+      <h2>Hanh Hio ToDoList</h2>
       <input
         type="text"
         value={input}
-        onChange={e => setInput(e.target.value)}
+        onChange={(e) => setInput(e.target.value)}
         placeholder="Nhập việc cần làm..."
         style={{ width: '70%', padding: 8, marginRight: 8 }}
       />
-      <button onClick={handleAddTask} style={{ padding: 8 }}>Thêm</button>
+      <button onClick={handleAddTask} style={{ padding: 8 }}>
+        Thêm
+      </button>
       <ul style={{ marginTop: 20 }}>
         {tasks.map((task, idx) => (
           <li key={idx} style={{ marginBottom: 10 }}>
