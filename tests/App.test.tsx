@@ -6,4 +6,4 @@ describe('Homepage testing', () => {
     render(<Test />);
     expect(screen.getByText('Test')).toBeInTheDocument();
   });
-};
+});
