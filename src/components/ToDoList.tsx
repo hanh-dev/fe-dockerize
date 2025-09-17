@@ -25,7 +25,7 @@ const ToDoList: React.FC = () => {
         borderRadius: 8,
       }}
     >
-      <h2>Hanh Hio ToDoList</h2>
+      <h2>Hanh Hio ToDoList New version</h2>
       <input
         type="text"
         value={input}
