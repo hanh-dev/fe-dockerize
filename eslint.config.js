@@ -1,32 +1,48 @@
 import js from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import reactHooks from 'eslint-plugin-react-hooks';
-import reactRefresh from 'eslint-plugin-react-refresh';
+import tsParser from '@typescript-eslint/parser'; // <- parser thật sự
+import tsPlugin from '@typescript-eslint/eslint-plugin';
 import unusedImports from 'eslint-plugin-unused-imports';
+import reactHooks from 'eslint-plugin-react-hooks';
+import globals from 'globals';
 
-export default tseslint.config(
-  js.configs.recommended,
-  ...tseslint.configs.recommended,
-
+/** @type {import("eslint").FlatConfig[]} */
+export default [
   {
-    files: ['**/*.{js,jsx,ts,tsx}'],
-    plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
-      'unused-imports': unusedImports,
-    },
+    ignores: [
+      'node_modules/**',
+      'dist/**',
+      '*.config.js',
+      '*.config.ts',
+      'coverage/**',
+    ],
+  },
+  {
+    files: ['**/*.{ts,tsx,js,jsx}'],
     languageOptions: {
-      parser: tseslint.parser,
-      ecmaVersion: 'latest',
-      sourceType: 'module',
+      parser: tsParser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        ecmaFeatures: { jsx: true },
+      },
       globals: {
+        ...globals.browser,
         process: 'readonly',
         console: 'readonly',
+        Buffer: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+        URL: 'readonly',
         setTimeout: 'readonly',
         clearTimeout: 'readonly',
         setInterval: 'readonly',
         clearInterval: 'readonly',
       },
+    },
+    plugins: {
+      '@typescript-eslint': tsPlugin,
+      'unused-imports': unusedImports,
+      'react-hooks': reactHooks,
     },
     rules: {
       indent: ['error', 2, { SwitchCase: 1 }],
@@ -41,42 +57,36 @@ export default tseslint.config(
       'array-bracket-spacing': ['error', 'never'],
       'no-console': 'off',
 
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
       'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': [
         'warn',
-        {
-          vars: 'all',
-          varsIgnorePattern: '^_',
-          args: 'after-used',
-          argsIgnorePattern: '^_',
-        },
+        { vars: 'all', varsIgnorePattern: '^_', argsIgnorePattern: '^_' },
       ],
 
-      // best practices
       'no-var': 'error',
       'prefer-const': 'error',
       'object-shorthand': ['error', 'always'],
       'prefer-arrow-callback': 'error',
       'no-multiple-empty-lines': ['error', { max: 1 }],
       'max-len': ['error', { code: 120 }],
-      'arrow-parens': ['off'],
+      'arrow-parens': ['error', 'always'],
 
-      // react
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
     },
   },
   {
-    ignores: [
-      'node_modules/**',
-      'dist/**',
-      'logs/**',
-      '*.config.js',
-      'coverage/**',
-    ],
+    files: ['tests/**/*.{ts,tsx,js,jsx}'],
+    languageOptions: {
+      globals: {
+        describe: 'readonly',
+        it: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        expect: 'readonly',
+      },
+    },
   },
-);
+];
