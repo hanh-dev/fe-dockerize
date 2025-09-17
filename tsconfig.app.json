@@ -27,6 +27,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "skipLibCheck": true,
+    "esModuleInterop": true,
 
     /* Jest + Node types */
     "types": ["jest", "node", "@testing-library/jest-dom"]

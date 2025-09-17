@@ -3,7 +3,8 @@
   "compilerOptions": {
     "types": ["jest", "@testing-library/jest-dom"],
     "isolatedModules": false,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "esModuleInterop": true
   },
   "include": [
     "setupTests.ts",
